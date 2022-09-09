@@ -5,16 +5,15 @@ import static org.testng.AssertJUnit.assertEquals;
 import io.cucumber.java.Before;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import io.cucumber.java.After;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
+
 public class ManageToDoDefinitions extends TestBase {
 	
-	WebDriver driver;
+	//WebDriver driver;
 	By HomePageHeader 	=    By.cssSelector("header[class='header']");
 	By itemTextBox   	=    By.cssSelector("input[class='new-todo']");
 	By toDoCount      	=    By.cssSelector("span[class='todo-count']");
@@ -23,12 +22,14 @@ public class ManageToDoDefinitions extends TestBase {
 	By clearCompleteBtn = 	 By.cssSelector("button[class='clear-completed']");
 	By allBtn           =    By.cssSelector("a[href='#/all']");
 	By toDoList         =    By.cssSelector("ul[class='todo-list']");
+	
 		
 	//Open browser instance before each test
 	@Before
     public void setUp() {
     	try {
-			driver=super.setupmain();
+			super.setupmain();
+			context.setAttribute("WebDriver", driver);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -106,12 +107,7 @@ public class ManageToDoDefinitions extends TestBase {
     }
     
     //Close browser instance after each test
-    @After
-    public void teardown() {
- 
-        driver.quit();
-    }
-    
+       
 	
 
 }

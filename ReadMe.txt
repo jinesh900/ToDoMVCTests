@@ -19,3 +19,8 @@ c. Run the command 'mvn clean test'.
 a. Open the project in IDE (e.g. Eclipse).
 b. Right click on testng.xml (under src/test/resources).
 c. Select Run As --> TestNG Suite.
+
+Note: A Screenshot will be taken if a test case failed. It will be placed in Screenshots folder at project directory.
+Make sure to have a directory called Screenshots.
+Screenshot will be renamed with epoch timestamp.
+Final scenario is intentioanlly failed to demo this.

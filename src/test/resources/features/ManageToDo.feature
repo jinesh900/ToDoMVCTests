@@ -68,4 +68,13 @@ Feature: Manage ToDo List
     	When Delete Item from ToDo List as "My test item two"
     	Then Verify Number of Items as 2
     	
+    	@AddingItemsFailed
+    Scenario: Add an Item to ToDo List
+    
+    	Given User is on Home page
+    	When Add Item to ToDo List as "My test item one"
+    	When Add Item to ToDo List as "My test item two"
+    	When Add Item to ToDo List as "My test item three"
+    	Then Items Left to Complete as "1"
+    	
    

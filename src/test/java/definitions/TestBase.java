@@ -4,13 +4,18 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.ITestContext;
+import io.cucumber.java.Scenario;
 
 public class TestBase {
 	
 	String browser = "chrome";
-	WebDriver driver;
+	static WebDriver driver;
+	ITestContext context;
 	
-	public WebDriver setupmain()throws Exception {
+	static Scenario scenario;
+	
+	public void setupmain()throws Exception {
 		if(browser.equalsIgnoreCase("firefox")){
 			//create firefox instance
 				System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")+"\\geckodriver.exe");
@@ -36,6 +41,17 @@ public class TestBase {
 			}
 		driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        return driver;
+              
+       }
+	
+	public static WebDriver getDriver() {
+		return driver;
 	}
-}
+	
+	}
+
+
+
+
+	
+	
