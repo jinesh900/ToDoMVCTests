@@ -27,12 +27,17 @@ public class ManageToDoDefinitions extends TestBase {
 	//Open browser instance before each test
 	@Before
     public void setUp() {
-    	try {
-			super.setupmain();
-			context.setAttribute("WebDriver", driver);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+    	
+			try {
+				super.setupmain();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			try {
+			super.context.setAttribute("WebDriver", driver);
+			} catch (Exception e) {
+				
+			}
 	  }
 		
     @Given("User is on Home page")
