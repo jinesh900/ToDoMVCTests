@@ -2,19 +2,17 @@ package definitions;
 
 import static org.testng.Assert.assertTrue;
 import static org.testng.AssertJUnit.assertEquals;
-import java.util.concurrent.TimeUnit;
 import io.cucumber.java.Before;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import io.cucumber.java.After;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class ManageToDoDefinitions {
+public class ManageToDoDefinitions extends TestBase {
 	
 	WebDriver driver;
 	By HomePageHeader 	=    By.cssSelector("header[class='header']");
@@ -25,20 +23,17 @@ public class ManageToDoDefinitions {
 	By clearCompleteBtn = 	 By.cssSelector("button[class='clear-completed']");
 	By allBtn           =    By.cssSelector("a[href='#/all']");
 	By toDoList         =    By.cssSelector("ul[class='todo-list']");
-	String browser;
-	String waitTime;
-	
+		
 	//Open browser instance before each test
 	@Before
     public void setUp() {
-    	System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir")+"\\chromedriver.exe");
-		driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-    	
-    }
-	
-	
+    	try {
+			driver=super.setupmain();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	  }
+		
     @Given("User is on Home page")
     public void userOnHomePage() {
     	    driver.get("https://todomvc.com/examples/vue/");
